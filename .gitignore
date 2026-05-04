@@ -1,0 +1,38 @@
+# ===== Backend =====
+# Environment variables (secrets)
+backend/.env
+backend/.env.production
+
+# SQLite database
+backend/*.db
+
+# Python virtual environment
+backend/venv/
+
+# Python bytecode
+backend/__pycache__/
+backend/**/__pycache__/
+*.pyc
+*.pyo
+
+# ===== Frontend =====
+# Dependencies
+frontend/node_modules/
+
+# Build output
+frontend/dist/
+
+# Local env files
+frontend/.env
+frontend/.env.local
+
+# ===== General =====
+.DS_Store
+*.log
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.idea/
+.vscode/
