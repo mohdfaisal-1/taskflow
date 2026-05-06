@@ -12,6 +12,7 @@ backend/venv/
 # Python bytecode
 backend/__pycache__/
 backend/**/__pycache__/
+backend/static/
 *.pyc
 *.pyo
 

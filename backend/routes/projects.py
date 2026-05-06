@@ -8,7 +8,7 @@ from dependencies import get_current_user, require_admin
 
 router = APIRouter(prefix="/api/projects", tags=["projects"])
 
-@router.post("/", response_model=ProjectOut)
+@router.post("", response_model=ProjectOut)
 def create_project(project_in: ProjectCreate, db: Session = Depends(get_db), current_user: User = Depends(require_admin)):
     new_project = Project(
         title=project_in.title,
@@ -30,7 +30,7 @@ def create_project(project_in: ProjectCreate, db: Session = Depends(get_db), cur
     new_project.member_count = 1
     return new_project
 
-@router.get("/", response_model=List[ProjectOut])
+@router.get("", response_model=List[ProjectOut])
 def get_projects(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     projects = db.query(Project).join(ProjectMember).filter(ProjectMember.user_id == current_user.id).all()
     for proj in projects:

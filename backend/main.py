@@ -1,6 +1,8 @@
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 
 from routes.auth import router as auth_router
@@ -49,13 +51,24 @@ app.include_router(auth_router)
 app.include_router(projects_router)
 app.include_router(tasks_router)
 
-@app.get("/")
-def read_root():
-    return {
-        "message": "TaskFlow API is running!",
-        "version": "1.0.0",
-        "docs": "/docs"
-    }
+# SPA catch-all and Static Assets
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+
+if os.path.isdir(STATIC_DIR):
+    # Mount assets directory for JS/CSS bundles
+    app.mount("/assets", StaticFiles(directory=os.path.join(STATIC_DIR, "assets")), name="assets")
+
+# SPA catch-all — MUST be after all API routes
+@app.get("/{full_path:path}")
+async def serve_spa(full_path: str):
+    file_path = os.path.join(STATIC_DIR, full_path)
+    if os.path.isfile(file_path):
+        return FileResponse(file_path)
+    # Default to index.html for client-side routing
+    index_path = os.path.join(STATIC_DIR, "index.html")
+    if os.path.isfile(index_path):
+        return FileResponse(index_path)
+    return {"message": "API is running. Build frontend to serve UI.", "docs": "/docs"}
 
 if __name__ == "__main__":
     import uvicorn

@@ -27,7 +27,7 @@ def get_dashboard(db: Session = Depends(get_db), current_user: User = Depends(ge
         overdue=overdue
     )
 
-@router.post("/", response_model=TaskOut)
+@router.post("", response_model=TaskOut)
 def create_task(task_in: TaskCreate, db: Session = Depends(get_db), current_user: User = Depends(require_admin)):
     project = db.query(Project).filter(Project.id == task_in.project_id).first()
     if not project:
@@ -56,7 +56,7 @@ def create_task(task_in: TaskCreate, db: Session = Depends(get_db), current_user
     task = db.query(Task).options(joinedload(Task.assignee)).filter(Task.id == new_task.id).first()
     return task
 
-@router.get("/", response_model=List[TaskOut])
+@router.get("", response_model=List[TaskOut])
 def get_tasks(
     project_id: int = Query(...),
     status: Optional[str] = None,
