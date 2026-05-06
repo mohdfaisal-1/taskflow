@@ -319,20 +319,16 @@ export default function Tasks() {
                       </td>
                       <td><Badge type={task.priority} /></td>
                       <td>
-                        {isAdmin ? (
-                          <Badge type={task.status} />
-                        ) : (
-                          <select
-                            className="input-glass"
-                            style={{ padding: '6px 10px', fontSize: '12px', width: 'auto' }}
-                            value={task.status}
-                            onChange={(e) => handleUpdateStatus(task.id, e.target.value)}
-                          >
-                            <option value="todo">To Do</option>
-                            <option value="in-progress">In Progress</option>
-                            <option value="done">Done</option>
-                          </select>
-                        )}
+                        <select
+                          className="input-glass"
+                          style={{ padding: '6px 10px', fontSize: '12px', width: 'auto' }}
+                          value={task.status}
+                          onChange={(e) => handleUpdateStatus(task.id, e.target.value)}
+                        >
+                          <option value="todo">To Do</option>
+                          <option value="in-progress">In Progress</option>
+                          <option value="done">Done</option>
+                        </select>
                       </td>
                       <td>
                         {task.due_date ? (

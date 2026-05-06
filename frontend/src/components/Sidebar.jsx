@@ -8,7 +8,8 @@ export default function Sidebar() {
   const navItems = [
     { path: '/dashboard', label: 'Dashboard', icon: '📊' },
     { path: '/projects', label: 'Projects', icon: '📁' },
-    { path: '/tasks', label: 'Tasks', icon: '✅' }
+    { path: '/tasks', label: 'Tasks', icon: '✅' },
+    { path: '/profile', label: 'Profile', icon: '👤' }
   ]
 
   return (

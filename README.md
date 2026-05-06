@@ -168,26 +168,23 @@ App available at **http://localhost:5173**
 
 ## 🌍 Deployment
 
-See the full deployment guide in [DEPLOY.md](./DEPLOY.md) for step-by-step instructions to deploy on:
-- **Railway** — Backend + PostgreSQL database
-- **Vercel** — Frontend (React + Vite)
+TaskFlow is designed as a **Mono-Deploy** on Railway. The backend serves the compiled React SPA as static files, simplifying deployment into a single service.
+
+### Deploy to Railway:
+1. Connect your GitHub repository to Railway.
+2. Railway will automatically detect the **Dockerfile** and build the application.
+3. Add a PostgreSQL database from Railway's dashboard and connect it to your service.
 
 ### Environment Variables Summary
 
-**Backend (Railway):**
+**Backend & Frontend (Railway):**
 | Variable | Description |
 |---|---|
-| `DATABASE_URL` | PostgreSQL connection string |
+| `DATABASE_URL` | PostgreSQL connection string (auto-provisioned by Railway) |
 | `SECRET_KEY` | JWT signing key (use `python -c "import secrets; print(secrets.token_hex(32))"`) |
 | `ALGORITHM` | `HS256` |
 | `ACCESS_TOKEN_EXPIRE_MINUTES` | `1440` |
 | `ENVIRONMENT` | `production` |
-| `ALLOWED_ORIGIN` | Your Vercel frontend URL |
-
-**Frontend (Vercel):**
-| Variable | Description |
-|---|---|
-| `VITE_API_URL` | Your Railway backend URL |
 
 ---
 
