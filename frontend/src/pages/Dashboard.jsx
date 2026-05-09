@@ -206,7 +206,7 @@ export default function Dashboard() {
             <h2 style={{ fontSize: '18px', fontWeight: 700, margin: 0 }}>📋 My Recent Tasks</h2>
             <Badge type="member">{recentTasks.length}</Badge>
           </div>
-          
+
           {recentTasks.length === 0 ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px 0' }}>
               <div style={{ fontSize: '64px', marginBottom: '16px' }}>✅</div>
@@ -234,7 +234,7 @@ export default function Dashboard() {
         {/* RIGHT - My Projects */}
         <div className="glass fade-in" style={{ padding: '28px' }}>
           <h2 style={{ fontSize: '18px', fontWeight: 700, margin: 0, marginBottom: '20px' }}>📁 My Projects</h2>
-          
+
           {projects.length === 0 ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px 0' }}>
               <div style={{ fontSize: '16px', fontWeight: 600, color: 'white' }}>No projects yet</div>
@@ -242,8 +242,8 @@ export default function Dashboard() {
           ) : (
             <div>
               {projects.slice(0, 5).map(project => (
-                <div 
-                  key={project.id} 
+                <div
+                  key={project.id}
                   className="project-item"
                   onClick={() => navigate(`/projects/${project.id}`)}
                 >

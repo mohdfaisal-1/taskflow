@@ -51,7 +51,7 @@ export default function Profile() {
           <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'white', marginBottom: '24px' }}>
             Account Information
           </h3>
-          
+
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
             <div>
               <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '8px' }}>Full Name</label>
@@ -59,14 +59,14 @@ export default function Profile() {
                 {user?.name || '-'}
               </div>
             </div>
-            
+
             <div>
               <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '8px' }}>Email Address</label>
               <div className="input-glass" style={{ opacity: 0.7, cursor: 'not-allowed' }}>
                 {user?.email || '-'}
               </div>
             </div>
-            
+
             <div>
               <label style={{ display: 'block', color: 'var(--text-secondary)', fontSize: '13px', marginBottom: '8px' }}>Role Level</label>
               <div className="input-glass" style={{ opacity: 0.7, cursor: 'not-allowed', textTransform: 'capitalize' }}>
@@ -74,7 +74,7 @@ export default function Profile() {
               </div>
             </div>
           </div>
-          
+
           <div style={{ marginTop: '32px', paddingTop: '24px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
             <p style={{ color: 'var(--text-muted)', fontSize: '13px' }}>
               Currently, profile updates are disabled. Please contact your system administrator to change your email or password.

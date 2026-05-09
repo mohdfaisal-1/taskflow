@@ -9,18 +9,18 @@ export default function Tasks() {
   const [tasks, setTasks] = useState([])
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(false)
-  
+
   const [selectedProject, setSelectedProject] = useState('')
   const [filterStatus, setFilterStatus] = useState('')
   const [filterPriority, setFilterPriority] = useState('')
-  
+
   const [showCreateModal, setShowCreateModal] = useState(false)
   const [newTask, setNewTask] = useState({
     title: '', description: '', project_id: '', assigned_to: '', priority: 'medium', due_date: ''
   })
   const [projectMembers, setProjectMembers] = useState([])
   const [creating, setCreating] = useState(false)
-  
+
   const { isAdmin } = useAuth()
 
   useEffect(() => {
@@ -79,7 +79,7 @@ export default function Tasks() {
       })
       setShowCreateModal(false)
       setNewTask({ title: '', description: '', project_id: '', assigned_to: '', priority: 'medium', due_date: '' })
-      
+
       if (selectedProject === newTask.project_id) {
         fetchTasks(selectedProject)
       } else {
@@ -213,8 +213,8 @@ export default function Tasks() {
 
       {/* FILTER BAR */}
       <div className="glass filter-bar" style={{ padding: '20px', margin: '24px 0' }}>
-        <select 
-          className="input-glass" 
+        <select
+          className="input-glass"
           style={{ minWidth: '200px', width: 'auto' }}
           value={selectedProject}
           onChange={(e) => setSelectedProject(e.target.value)}
@@ -341,7 +341,7 @@ export default function Tasks() {
                       </td>
                       {isAdmin && (
                         <td>
-                          <button 
+                          <button
                             onClick={() => handleDeleteTask(task.id)}
                             style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '16px', opacity: 0.7 }}
                             title="Delete task"
@@ -366,7 +366,7 @@ export default function Tasks() {
           <div className="glass slide-panel fade-in">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px' }}>
               <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'white', margin: 0 }}>✨ Create New Task</h2>
-              <button 
+              <button
                 onClick={() => setShowCreateModal(false)}
                 style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', fontSize: '24px', cursor: 'pointer' }}
               >

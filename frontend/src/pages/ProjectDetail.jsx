@@ -10,7 +10,7 @@ export default function ProjectDetail() {
   const { id } = useParams()
   const [project, setProject] = useState(null)
   const [loading, setLoading] = useState(true)
-  
+
   const [showAddMember, setShowAddMember] = useState(false)
   const [newMemberId, setNewMemberId] = useState('')
   const [newMemberRole, setNewMemberRole] = useState('member')
@@ -105,10 +105,10 @@ export default function ProjectDetail() {
   if (!project) return <div style={{ color: 'white', padding: '40px', textAlign: 'center' }}>Project not found.</div>
 
   const gradients = [
-    'var(--grad-primary)', 
-    'var(--grad-secondary)', 
-    'var(--grad-success)', 
-    'var(--grad-warning)', 
+    'var(--grad-primary)',
+    'var(--grad-secondary)',
+    'var(--grad-success)',
+    'var(--grad-warning)',
     'var(--grad-orange)'
   ]
 
@@ -224,7 +224,7 @@ export default function ProjectDetail() {
                   </div>
                 </div>
                 {isAdmin && member.user?.id !== user?.id && (
-                  <button 
+                  <button
                     onClick={() => handleRemoveMember(member.user?.id)}
                     style={{ position: 'absolute', top: '12px', right: '12px', color: '#fa709a', background: 'none', border: 'none', cursor: 'pointer', fontSize: '12px', padding: '4px' }}
                   >
@@ -265,7 +265,7 @@ export default function ProjectDetail() {
                   {colTasks.map(task => (
                     <div key={task.id} className="glass glass-hover task-card" style={{ padding: '16px', marginBottom: '10px', borderRadius: '14px', position: 'relative' }}>
                       {isAdmin && (
-                        <div 
+                        <div
                           onClick={(e) => handleDeleteTask(e, task.id)}
                           style={{ position: 'absolute', top: '12px', right: '12px', cursor: 'pointer', fontSize: '14px', opacity: 0.6 }}
                           title="Delete task"
@@ -273,16 +273,16 @@ export default function ProjectDetail() {
                           🗑️
                         </div>
                       )}
-                      
+
                       <div style={{ color: 'white', fontSize: '14px', fontWeight: 600, marginBottom: '8px', paddingRight: '20px' }}>
                         {task.title}
                       </div>
                       <div className="line-clamp-2" style={{ color: 'var(--text-muted)', fontSize: '12px', marginBottom: '12px', minHeight: '34px' }}>
                         {task.description || 'No description'}
                       </div>
-                      
+
                       {/* Status select for members */}
-                      <select 
+                      <select
                         className="input-glass"
                         style={{ padding: '6px 10px', fontSize: '12px', marginBottom: '12px', width: '100%' }}
                         value={task.status}
@@ -326,7 +326,7 @@ export default function ProjectDetail() {
         <div className="modal-overlay">
           <div className="glass fade-in" style={{ padding: '32px', width: '400px', borderRadius: '24px', maxWidth: '90%' }}>
             <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'white', marginBottom: '24px', margin: 0 }}>Add Team Member</h2>
-            
+
             <div style={{ marginBottom: '16px' }}>
               <label style={{ color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 600, marginBottom: '8px', display: 'block' }}>
                 User ID
@@ -371,7 +371,7 @@ export default function ProjectDetail() {
           <div className="glass slide-panel fade-in">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px' }}>
               <h2 style={{ fontSize: '20px', fontWeight: 700, color: 'white', margin: 0 }}>Create New Task</h2>
-              <button 
+              <button
                 onClick={() => setShowAddTask(false)}
                 style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', fontSize: '24px', cursor: 'pointer' }}
               >

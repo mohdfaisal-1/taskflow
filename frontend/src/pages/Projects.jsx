@@ -35,7 +35,7 @@ export default function Projects() {
       setError('Project name is required')
       return
     }
-    
+
     try {
       setCreating(true)
       setError('')
@@ -66,10 +66,10 @@ export default function Projects() {
   if (loading && projects.length === 0) return <FullPageSpinner />
 
   const gradients = [
-    'var(--grad-primary)', 
-    'var(--grad-secondary)', 
-    'var(--grad-success)', 
-    'var(--grad-warning)', 
+    'var(--grad-primary)',
+    'var(--grad-secondary)',
+    'var(--grad-success)',
+    'var(--grad-warning)',
     'var(--grad-orange)'
   ]
 
@@ -128,8 +128,8 @@ export default function Projects() {
           <p style={{ color: 'var(--text-secondary)' }}>Manage your team projects</p>
         </div>
         {isAdmin && (
-          <button 
-            className="btn-primary" 
+          <button
+            className="btn-primary"
             onClick={() => setShowModal(true)}
           >
             ＋ New Project
@@ -149,13 +149,13 @@ export default function Projects() {
           {projects.map((project, idx) => {
             const grad = gradients[idx % gradients.length]
             return (
-              <div 
-                key={project.id} 
+              <div
+                key={project.id}
                 className="glass glass-hover project-card"
                 onClick={() => navigate(`/projects/${project.id}`)}
               >
                 <div style={{ height: '5px', background: grad, borderRadius: '20px 20px 0 0', position: 'absolute', top: 0, left: 0, right: 0 }} />
-                
+
                 <div style={{ padding: '24px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{
@@ -166,7 +166,7 @@ export default function Projects() {
                       {(project.title || project.name || 'P').charAt(0).toUpperCase()}
                     </div>
                     {isAdmin && (
-                      <div 
+                      <div
                         onClick={(e) => handleDelete(e, project.id)}
                         style={{ fontSize: '18px', padding: '4px', opacity: 0.7, transition: '0.2s', borderRadius: '8px' }}
                         onMouseOver={(e) => e.currentTarget.style.opacity = 1}
@@ -177,11 +177,11 @@ export default function Projects() {
                       </div>
                     )}
                   </div>
-                  
+
                   <h3 className="line-clamp-1" style={{ fontSize: '18px', fontWeight: 700, color: 'white', margin: '16px 0 8px' }}>
                     {project.title || project.name}
                   </h3>
-                  
+
                   <p className="line-clamp-2" style={{ color: 'var(--text-secondary)', fontSize: '14px', minHeight: '40px' }}>
                     {project.description || 'No description provided.'}
                   </p>
@@ -207,7 +207,7 @@ export default function Projects() {
           <div className="glass fade-in" style={{ width: '500px', maxWidth: '90%', padding: '40px', borderRadius: '24px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
               <h2 style={{ fontSize: '22px', fontWeight: 700, color: 'white', margin: 0 }}>✨ Create New Project</h2>
-              <button 
+              <button
                 onClick={() => setShowModal(false)}
                 style={{ background: 'none', border: 'none', color: 'var(--text-secondary)', fontSize: '24px', cursor: 'pointer' }}
               >
@@ -256,8 +256,8 @@ export default function Projects() {
               <button className="btn-ghost" onClick={() => setShowModal(false)}>
                 Cancel
               </button>
-              <button 
-                className="btn-primary" 
+              <button
+                className="btn-primary"
                 onClick={handleCreate}
                 disabled={creating}
               >
